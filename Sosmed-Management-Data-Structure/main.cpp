@@ -20,7 +20,6 @@ int main()
 
     adrElementPaket tempAdr;
     adrUser tempAdrUser;
-//    bool stop = false;
 
     createListPaket(LP);
     createListUser(LU);
