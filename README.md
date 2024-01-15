@@ -1,6 +1,6 @@
-# Telkom University Free Paid-Subs System
+# My Data Structures Assignment
 
-Welcome to the Telkom University Free Paid-Subs System repository! This project showcases the implementation of fundamental data structures to manage user and package information for a student-centric social media platform. The system is designed to facilitate a free paid-subscription model, offering students at Telkom University an opportunity to access premium features without any cost.
+Welcome to the My Data Structures assignment repository! This project showcases the implementation of fundamental data structures to manage user and package information for a student-centric social media platform. The system is designed to facilitate a free paid-subscription model, offering students at Telkom University an opportunity to access premium features without any cost.
 
 ## Table of Contents
 
