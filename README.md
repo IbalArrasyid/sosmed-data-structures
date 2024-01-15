@@ -1,6 +1,6 @@
-# My Data Structures Assignment
+# Telkom University Free Paid-Subs System
 
-Welcome to the My Data Structures assignment repository! This assignment focuses on implementing fundamental data structures to manage user and package information for a social media platform.
+Welcome to the Telkom University Free Paid-Subs System repository! This project showcases the implementation of fundamental data structures to manage user and package information for a student-centric social media platform. The system is designed to facilitate a free paid-subscription model, offering students at Telkom University an opportunity to access premium features without any cost.
 
 ## Table of Contents
 
@@ -13,7 +13,7 @@ Welcome to the My Data Structures assignment repository! This assignment focuses
 
 ## Introduction
 
-This assignment aims to showcase your understanding and implementation skills in data structures, specifically linked lists. The assignment involves creating a social media platform data structure where users can be managed, packages can be defined, and relationships (subscriptions) between users and packages can be established.
+This assignment focuses on the development of a social media platform tailored for students at Telkom University. The platform introduces a free paid-subs system, allowing students to enjoy premium features without any financial burden. The data structures implemented include linked lists to manage user and package information, enabling efficient subscription management and user interaction.
 ![Diagram Final](https://github.com/IbalArrasyid/sosmed-data-structures/assets/107937107/aded87d9-1f37-4e5c-b3ed-6b030d765127)
 
 
