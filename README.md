@@ -54,7 +54,7 @@ Display detailed information about users and packages, aiding in understanding t
 
 Modify existing relationships between users and packages. This includes adding or removing users from packages.
 
-For detailed information on each functionality, refer to the [code documentation](sosmed.h).
+For detailed information on each functionality, refer to the [code documentation](Sosmed-Management-Data-Structure/sosmed.h).
 
 ## Contributing
 
