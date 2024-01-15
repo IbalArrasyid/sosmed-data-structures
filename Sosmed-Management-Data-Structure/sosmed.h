@@ -86,7 +86,7 @@ void handleDeletePaketByIDpaket(listPaket& LP);
 // e. Delete element child
 void deleteUser(listUser& LU, adrUser PU, adrUser prev);
 void handleDeleteUserByName(listUser& LU);
-void handleDeleteUserByNIM(listUser& LU);
+void handleDeleteUserByNIM(listUser& LU, listPaket& LP);
 // f. Delete element relation
 void deleteFirstChild(adrChildPaket &PC, adrElementPaket &PP);
 void handleDeleteLanggananOnPaketByIDpaket(listPaket LP, listUser LU);
