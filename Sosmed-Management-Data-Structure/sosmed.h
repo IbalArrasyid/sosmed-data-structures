@@ -76,7 +76,8 @@ void insertLastU(listUser& LU, adrUser& PU);
 void insertAfterU(listUser& LU, adrUser Prec, adrUser& PU);
 // c. Insert element relation
 void addUserToPaket(adrElementPaket PP, adrUser PU);
-void handleAddUserToPaket(listPaket LP, listUser LU);
+void handleAddPaketToNewUser(listPaket LP, listUser LU);
+void handleAddPaketToUserFromList(listPaket LP, listUser LU);
 
                             /** DELETE **/
 // d. delete element parent
