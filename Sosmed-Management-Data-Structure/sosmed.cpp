@@ -238,6 +238,7 @@ void deleteFirstChild(adrChildPaket &PC, adrElementPaket &PP){
 
 }
 
+
 void printMenu(int &selection){
     cout << endl;
     cout << "================== MENU =========================" << endl;
@@ -350,21 +351,47 @@ void handleDeleteUserByName(listUser& LU){
     }
 }
 
-void handleDeleteUserByNIM(listUser& LU){
+void handleDeleteUserByNIM(listUser& LU, listPaket& LP){
     string NIM;
     adrUser prev;
     adrUser target;
     cout << "Masukan NIM user: ";
     cin >> NIM;
     target = searchUserByNIM(LU, NIM, prev);
+
+    adrElementPaket PP = first(LP);
+
     if(target != NULL){
         cout << "Data ditemukan, menghapus..." << endl;
-        deleteUser(LU,target,prev);
+
+        while (PP != NULL) {
+            adrChildPaket C = child(PP);
+            if (C != NULL) {
+                if (C->node == target) {
+                    deleteFirstChild(C, PP);
+                    cout << "\n[Selesai!!]" << endl;
+                    return;
+                }
+
+                while (C->next != NULL) {
+                    if (C->next->node == target) {
+                        C->next = C->next->next;
+                        cout << "\n[Selesai!!]" << endl;
+                        return;
+                    }
+                    C = C->next;
+                }
+            }
+            PP = next(PP);
+        }
+        deleteUser(LU, target, prev);
+
         cout << "\n[Selesai!!]" << endl;
     } else {
-        cout << "\nNama User Tidak Ditemukan" << endl << endl;
+        cout << "\nNIM User Tidak Ditemukan" << endl << endl;
     }
 }
+
 
 void handleShowPaketByIDpaket(listPaket LP){
     string IDpaket;
@@ -838,3 +865,6 @@ void handleEditPaketLangganan(listPaket LP, listUser LU) {
         cout << "Paket tidak ditemukan.." << endl;
     }
 }
+
+
+
