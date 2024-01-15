@@ -105,7 +105,7 @@ int main()
             handleDeletePaketByIDpaket(LP);
             break;
         case 4:
-            handleDeleteUserByNIM(LU);
+            handleDeleteUserByNIM(LU, LP);
             break;
         case 5:
             showAllPaket(LP,false);
@@ -167,3 +167,4 @@ int main()
 
     return 0;
 }
+
