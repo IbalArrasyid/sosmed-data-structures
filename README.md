@@ -9,15 +9,13 @@ Welcome to the My Data Structures assignment repository! This assignment focuses
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
 - [Functionalities](#functionalities)
-- [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Introduction
 
 This assignment aims to showcase your understanding and implementation skills in data structures, specifically linked lists. The assignment involves creating a social media platform data structure where users can be managed, packages can be defined, and relationships (subscriptions) between users and packages can be established.
-![structure data illustration](![Diagram Final](https://github.com/IbalArrasyid/sosmed-data-structures/assets/107937107/aded87d9-1f37-4e5c-b3ed-6b030d765127)
-)
+![Diagram Final](https://github.com/IbalArrasyid/sosmed-data-structures/assets/107937107/aded87d9-1f37-4e5c-b3ed-6b030d765127)
+
 
 ## Requirements
 
