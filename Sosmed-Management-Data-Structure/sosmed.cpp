@@ -248,18 +248,19 @@ void printMenu(int &selection){
     cout << "= 5.  Tampilkan Semua Paket                     =" << endl;
     cout << "= 6.  Tampilkan Data paket dengan ID            =" << endl;
     cout << "= 7.  Tampilkan Data user dengan NIM            =" << endl;
-    cout << "= 8.  Daftarkan User pada Paket                 =" << endl;
-    cout << "= 9.  Lihat Daftar User                         =" << endl;
-    cout << "= 10. Lihat Paket dan User                      =" << endl;
-    cout << "= 11. Hapus User Pada Paket X                   =" << endl;
-    cout << "= 12. Lihat Daftar User Pada Paket X            =" << endl;
-    cout << "= 13. Lihat Daftar Paket Pada User X            =" << endl;
-    cout << "= 14. Cari User dengan ID pada Paket X          =" << endl;
-    cout << "= 15. Tampilkan Jumlah relasi dari setiap paket =" << endl;
-    cout << "= 16. Tampilkan Jumlah relasi dari user X       =" << endl;
-    cout << "= 17. Tampilkan Jumlah Paket Kosong             =" << endl;
-    cout << "= 18. Tampilkan Jumlah User Kosong              =" << endl;
-    cout << "= 19. Edit Data Langganan Paket                 =" << endl;
+    cout << "= 8.  Daftarkan Paket Ke User Baru              =" << endl;
+    cout << "= 9.  Daftarkan Paket Ke User Dari List User    =" << endl;
+    cout << "= 10. Lihat Daftar User                         =" << endl;
+    cout << "= 11. Lihat Paket dan User                      =" << endl;
+    cout << "= 12. Hapus User Pada Paket X                   =" << endl;
+    cout << "= 13. Lihat Daftar User Pada Paket X            =" << endl;
+    cout << "= 14. Lihat Daftar Paket Pada User X            =" << endl;
+    cout << "= 15. Cari User dengan ID pada Paket X          =" << endl;
+    cout << "= 16. Tampilkan Jumlah relasi dari setiap paket =" << endl;
+    cout << "= 17. Tampilkan Jumlah relasi dari user X       =" << endl;
+    cout << "= 18. Tampilkan Jumlah Paket Kosong             =" << endl;
+    cout << "= 19. Tampilkan Jumlah User Kosong              =" << endl;
+    cout << "= 20. Edit Data Langganan Paket                 =" << endl;
     cout << "= -1. EXIT                                      =" << endl;
     cout << "=================================================" << endl;
     cout << endl;
@@ -283,6 +284,7 @@ void handleAddPaket(listPaket& LP, paketInfotype& paket, adrElementPaket& tempAd
     cin >> paket.nama_platform;
     cout << "Masukan Maksimum Kuota : ";
     cin >> paket.kuotaMax;
+    cout << "\n[Sukses!!]" << endl;
     createElementPaket(paket, tempAdr);
     insertLastP(LP, tempAdr);
 }
@@ -303,6 +305,7 @@ void handleAddUser(listUser &LU, userInfotype &user, adrUser &tempAdr){
     cin >> user.email;
     cout << "Masukan Semester User : ";
     cin >> user.semester;
+    cout << "\n[Sukses!!]" << endl;
     createElementUser(user, tempAdr);
     insertLastU(LU, tempAdr);
 }
@@ -323,10 +326,10 @@ void handleDeletePaketByIDpaket(listPaket& LP) {
         } else {
             cout << "Data ditemukan, menghapus..." << endl;
             deletePaket(LP, target, prev);
-            cout << "[Selesai!!]" << endl;
+            cout << "\n[Selesai!!]" << endl;
         }
     } else {
-        cout << "ID Paket Tidak Ditemukan" << endl << endl;
+        cout << "\nID Paket Tidak Ditemukan" << endl << endl;
     }
 }
 
@@ -341,9 +344,9 @@ void handleDeleteUserByName(listUser& LU){
     if(target != NULL){
         cout << "Data ditemukan, menghapus..." << endl;
         deleteUser(LU,target,prev);
-        cout << "[Selesai!!]" << endl;
+        cout << "\n[Selesai!!]" << endl;
     } else {
-        cout << "Nama User Tidak Ditemukan" << endl << endl;
+        cout << "\nNama User Tidak Ditemukan" << endl << endl;
     }
 }
 
@@ -357,9 +360,9 @@ void handleDeleteUserByNIM(listUser& LU){
     if(target != NULL){
         cout << "Data ditemukan, menghapus..." << endl;
         deleteUser(LU,target,prev);
-        cout << "[Selesai!!]" << endl;
+        cout << "\n[Selesai!!]" << endl;
     } else {
-        cout << "Nama User Tidak Ditemukan" << endl << endl;
+        cout << "\nNama User Tidak Ditemukan" << endl << endl;
     }
 }
 
@@ -375,7 +378,7 @@ void handleShowPaketByIDpaket(listPaket LP){
         cout << "Data ditemukan, berikut adalah data dari paket tersebut:" << endl;
         showPaket(target,1);
     } else {
-        cout << "ID Tidak Ditemukan" << endl << endl;
+        cout << "\nID Tidak Ditemukan" << endl << endl;
     }
 }
 
@@ -391,11 +394,12 @@ void handleShowUserByNIM(listUser LU){
         cout << "Data ditemukan, berikut adalah data dari user tersebut:" << endl;
         showUser(target);
     } else {
-        cout << "NIM Tidak Ditemukan" << endl << endl;
+        cout << "\nNIM Tidak Ditemukan" << endl << endl;
     }
 }
 
-void handleAddUserToPaket(listPaket LP, listUser LU){
+void handleAddPaketToNewUser(listPaket LP, listUser LU)
+{
     string IDpaket;
     adrElementPaket prev;
     adrElementPaket target;
@@ -405,45 +409,120 @@ void handleAddUserToPaket(listPaket LP, listUser LU){
     adrUser userElTemp;
     cout << "Masukan ID Paket: ";
     cin >> IDpaket;
-    target = searchPaket(LP,IDpaket,prev);
+    target = searchPaket(LP, IDpaket, prev);
 
-    if(target != NULL){
+    if (target != NULL)
+    {
         int userCount = 0;
 
         adrChildPaket tempChild = child(target);
-        while(tempChild != NULL) {
+        while (tempChild != NULL)
+        {
             userCount++;
             tempChild = next(tempChild);
         }
         int emptySlot = info(target).kuotaMax - userCount;
         int userAmount;
 
-        cout << "Masukan Jumlah User, Batas maksimum " << emptySlot << " :";
+        cout << "Masukan Jumlah User, Batas maksimum " << emptySlot << " : ";
         cin >> userAmount;
 
-        if(userAmount <= emptySlot) {
-              for(int i=0; i < userAmount; i++){
-                cout << "\nMasukan Nama User " << to_string(i+1) << " : ";
-                cin >>  user.nama;
-                cout << "Masukan NIM User "  << to_string(i+1) << " : ";
-                cin >>  user.NIM;
-                cout << "Masukan Email User "  << to_string(i+1) << " : ";
-                cin >>  user.email;
-                cout << "Masukan Semester User "  << to_string(i+1) << " : ";
-                cin >>  user.semester;
-                targetUser = searchUser(LU, user.nama, prevUser);
-                if (targetUser == NULL){
-                    createElementUser(user,userElTemp);
+        if (userAmount <= emptySlot)
+        {
+            for (int i = 0; i < userAmount; i++)
+            {
+                cout << "\nMasukan Nama User " << to_string(i + 1) << " : ";
+                cin >> user.nama;
+                cout << "Masukan NIM User " << to_string(i + 1) << " : ";
+                cin >> user.NIM;
+                cout << "Masukan Email User " << to_string(i + 1) << " : ";
+                cin >> user.email;
+                cout << "Masukan Semester User " << to_string(i + 1) << " : ";
+                cin >> user.semester;
+                if (user.semester > 4){
+                    cout << "Alert! Paket ini hanya untuk mahasiswa tahun 1 & 2\n";
+                    return;
+                }
+                targetUser = searchUserByNIM(LU, user.NIM, prevUser);
+                if (targetUser == NULL)
+                {
+                    createElementUser(user, userElTemp);
                     insertLastU(LU, userElTemp);
                     targetUser = userElTemp;
                 }
 
-                addUserToPaket(target,targetUser);
+                addUserToPaket(target, targetUser);
+                cout << "\n[Sukses!!]" << endl;
             }
-        } else {
-            cout << "Jumlah User Melebihi Kuota" << endl;
         }
+        else
+        {
+            cout << "\nJumlah User Melebihi Kuota" << endl;
+        }
+    }
+    else
+    {
+        cout << "\nID tidak terdaftar" << endl;
+    }
+}
 
+void handleAddPaketToUserFromList(listPaket LP, listUser LU)
+{
+    string IDpaket;
+    adrElementPaket prev;
+    adrElementPaket target;
+    adrUser prevUser;
+    adrUser targetUser;
+    userInfotype user;
+    cout << "Masukan ID Paket: ";
+    cin >> IDpaket;
+    target = searchPaket(LP, IDpaket, prev);
+
+    if (target != NULL)
+    {
+        int userCount = 0;
+
+        adrChildPaket tempChild = child(target);
+        while (tempChild != NULL)
+        {
+            userCount++;
+            tempChild = next(tempChild);
+        }
+        int emptySlot = info(target).kuotaMax - userCount;
+        int userAmount;
+
+        cout << "Masukan Jumlah User, Batas maksimum " << emptySlot << " : ";
+        cin >> userAmount;
+
+        if (userAmount <= emptySlot)
+        {
+            for (int i = 0; i < userAmount; i++)
+            {
+                cout << "\nMasukan Nama User " << to_string(i + 1) << " : ";
+                cin >> user.nama;
+                targetUser = searchUser(LU, user.nama, prevUser);
+                if (targetUser == NULL)
+                {
+                    cout << "User belum terdaftar di List-User\n";
+                    cout << "\n";
+                    return;
+                }else {
+                    if (targetUser->info.semester > 3){
+                        cout << "Alert! Paket ini hanya untuk mahasiswa tahun 1 & 2" << endl;
+                        return;
+                    }
+                    addUserToPaket(target, targetUser);
+                    cout << "\n[Sukses!!]" << endl;
+                }
+            }
+        }
+        else
+        {
+            cout << "\nJumlah User Melebihi Kuota" << endl;
+        }
+    }
+    else{
+        cout << "\nID tidak terdaftar" << endl;
     }
 }
 
@@ -454,35 +533,48 @@ void handleDeleteLanggananOnPaketByIDpaket(listPaket LP, listUser LU){
     cin >> IDpaket;
     cout << "Masukan NIM User: ";
     cin >> NIM;
+
     adrUser prevUser;
     adrUser targetUser = searchUserByNIM(LU, NIM, prevUser);
     if (targetUser == NULL){
-        cout << "User tidak ditemukan..";
+        cout << "\nUser tidak ditemukan.." << endl;
         return;
     }
 
     adrElementPaket prev;
-    adrElementPaket target;
-    target = searchPaket(LP,IDpaket,prev);
+    adrElementPaket target = searchPaket(LP, IDpaket, prev);
+
     if(target != NULL) {
-        adrChildPaket C = target->child;
+
         cout << "Data paket ditemukan, menghapus..." << endl;
-        if (C->node == targetUser){
-            deleteFirstChild(C, target);
-            cout << "[Sukses!!]" << endl;
-            return;
-        }
-        while(C != NULL){
-            if (C->next->node == targetUser){
-                C->next = C->next->next;
-                delete targetUser;
-                cout << "[Sukses!!]" << endl;
+        if (target->child != NULL){
+            adrChildPaket C = target->child;
+
+            if (C->node == targetUser){
+                deleteFirstChild(C, target);
+                cout << "\n[Sukses!!]" << endl;
                 return;
             }
-            C = C->next;
+
+            while(C->next != NULL){
+                if (C->next->node == targetUser){
+                    C->next = C->next->next;
+                    delete targetUser;
+                    cout << "\n[Sukses!!]" << endl;
+                    return;
+                }
+                C = C->next;
+            }
+            cout << "\n[Gagal!!] User tidak berlangganan pada paket ini.." << endl;
+        } else {
+            cout << "\n[Gagal!!] Paket belum memiliki pelanggan..";
+            return;
         }
+    } else {
+        cout << "\nPaket tidak ditemukan.." << endl;
     }
 }
+
 
 void handleShowLanggananOnPaketByIDpaket(listPaket LP){
     string IDpaket;
@@ -493,7 +585,7 @@ void handleShowLanggananOnPaketByIDpaket(listPaket LP){
     target = searchPaket(LP, IDpaket, prev);
     if(target != NULL) {
         if(child(target) == NULL) {
-            cout << "User Kosong, Silahkan tambahkan pada menu." << endl;
+            cout << "\nUser Kosong, Silahkan tambahkan pada menu." << endl;
             return;
         }
         adrChildPaket tempChild = child(target);
@@ -526,8 +618,9 @@ void handleShowPaketOnUser(listPaket LP, listUser LU) {
             }
             P = next(P);
         }
+        cout << "\nKosong, Silahkan tambahkan pada menu.." << endl;
     } else {
-        cout << "User tidak ditemukan.." << endl;
+        cout << "\nUser tidak ditemukan.." << endl;
     }
 }
 
@@ -551,7 +644,7 @@ void handleShowUserOnPaketByIDpaket(listPaket LP){
                 return;
             }
         }
-        cout << "User tidak ditemukan.." << endl;
+        cout << "\nUser tidak ditemukan.." << endl;
     }
 }
 
@@ -599,9 +692,8 @@ int countUnusedUsers(listUser LU, listPaket LP) {
         }
 
         if (!hasRelations) {
-            // User has no relations
             count++;
-            showUser(tempUser); // You can display the user information here
+            showUser(tempUser);
         }
 
         tempUser = next(tempUser);
@@ -683,7 +775,7 @@ void handleCountSubcriptions(listUser LU, listPaket LP){
         int subscriptionCount = countSubscriptions(targetUser, LP);
         cout << "User dengan NIM " << targetNIM << " memiliki " << subscriptionCount << " subscriptions." << endl;
     } else {
-        cout << "User tidak ditemukan.." << endl;
+        cout << "\nUser tidak ditemukan.." << endl;
     }
 }
 
@@ -746,6 +838,3 @@ void handleEditPaketLangganan(listPaket LP, listUser LU) {
         cout << "Paket tidak ditemukan.." << endl;
     }
 }
-
-
-
