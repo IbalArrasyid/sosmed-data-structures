@@ -1,0 +1,41 @@
+# depslib dependency file v1.0
+1704198741 source:c:\users\ahmad\onedrive - telkom university\1. struktur data\tubes_kelompok3\main.cpp
+	"sosmed.h"
+
+1704003479 c:\users\ahmad\onedrive - telkom university\1. struktur data\tubes_kelompok3\sosmed.h
+	<stdio.h>
+	<iostream>
+
+1704031672 source:c:\users\ahmad\onedrive - telkom university\1. struktur data\tubes_kelompok3\sosmed.cpp
+	"sosmed.h"
+
+1704379419 source:c:\users\ahmad\desktop\tubes_kelompok3\main.cpp
+	"sosmed.h"
+
+1704003479 c:\users\ahmad\desktop\tubes_kelompok3\sosmed.h
+	<stdio.h>
+	<iostream>
+
+1704379437 source:c:\users\ahmad\desktop\tubes_kelompok3\sosmed.cpp
+	"sosmed.h"
+
+1705149801 source:d:\00_personal\telkom_university\semester 3\03_struktur data (fsv)\04_code\tubes\tubes_kelompok3_final\sosmed.cpp
+	"sosmed.h"
+
+1705145898 d:\00_personal\telkom_university\semester 3\03_struktur data (fsv)\04_code\tubes\tubes_kelompok3_final\sosmed.h
+	<stdio.h>
+	<iostream>
+
+1705146326 source:d:\00_personal\telkom_university\semester 3\03_struktur data (fsv)\04_code\tubes\tubes_kelompok3_final\main.cpp
+	"sosmed.h"
+
+1705305624 source:d:\00_personal\telkom_university\semester 3\03_struktur data (fsv)\04_code\tubes\240113_kelompok3_final\main.cpp
+	"sosmed.h"
+
+1705305515 d:\00_personal\telkom_university\semester 3\03_struktur data (fsv)\04_code\tubes\240113_kelompok3_final\sosmed.h
+	<stdio.h>
+	<iostream>
+
+1705305515 source:d:\00_personal\telkom_university\semester 3\03_struktur data (fsv)\04_code\tubes\240113_kelompok3_final\sosmed.cpp
+	"sosmed.h"
+
