@@ -118,39 +118,42 @@ int main()
             handleShowUserByNIM(LU);
             break;
         case 8:
-            handleAddUserToPaket(LP,LU);
+            handleAddPaketToNewUser(LP, LU);
             break;
         case 9:
-            showAllUser(LU);
+            handleAddPaketToUserFromList(LP, LU);
             break;
         case 10:
-            showAllPaket(LP,true);
+            showAllUser(LU);
             break;
         case 11:
-            handleDeleteLanggananOnPaketByIDpaket(LP, LU);
+            showAllPaket(LP,true);
             break;
         case 12:
-            handleShowLanggananOnPaketByIDpaket(LP);
+            handleDeleteLanggananOnPaketByIDpaket(LP, LU);
             break;
         case 13:
-            handleShowPaketOnUser(LP, LU);
+            handleShowLanggananOnPaketByIDpaket(LP);
             break;
         case 14:
-            handleShowUserOnPaketByIDpaket(LP);
+            handleShowPaketOnUser(LP, LU);
             break;
         case 15:
-            countRelations(LP);
+            handleShowUserOnPaketByIDpaket(LP);
             break;
         case 16:
-            handleCountSubcriptions(LU, LP);
+            countRelations(LP);
             break;
         case 17:
-            handleCountUnusedPaket(LP);
+            handleCountSubcriptions(LU, LP);
             break;
         case 18:
-            handleCountUnusedUser(LU, LP);
+            handleCountUnusedPaket(LP);
             break;
         case 19:
+            handleCountUnusedUser(LU, LP);
+            break;
+        case 20:
             handleEditPaketLangganan(LP, LU);
             break;
         default:
@@ -161,7 +164,7 @@ int main()
         system("CLS");
         printMenu(selection);
     }
+    cout << "Terima Kasih Telah Menggunakan Aplikasi ini :)" << endl;
 
     return 0;
 }
-
