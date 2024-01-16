@@ -366,19 +366,14 @@ void handleDeleteUserByNIM(listUser& LU, listPaket& LP){
 
         while (PP != NULL) {
             adrChildPaket C = child(PP);
-            if (C != NULL) {
-                if (C->node == target) {
-                    deleteFirstChild(C, PP);
-                    cout << "\n[Selesai!!]" << endl;
-                    return;
-                }
-
-                while (C->next != NULL) {
-                    if (C->next->node == target) {
-                        C->next = C->next->next;
-                        cout << "\n[Selesai!!]" << endl;
-                        return;
-                    }
+            while (C != NULL && C->node == target) {
+                deleteFirstChild(C, PP);
+                C = child(PP);
+            }
+            while (C != NULL && C->next != NULL) {
+                if (C->next->node == target) {
+                    C->next = C->next->next;
+                } else {
                     C = C->next;
                 }
             }
